@@ -1,11 +1,12 @@
-import { useState } from 'react'
+import React,{ useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
-import './App.css'
+// import './App.css'
 import Puppies from './components/AllPlayers'
 
-async function App() {
-  // const [count, setCount] = useState(0)
+ function App() {
+  const [players, setPlayers] = useState([])
+  const getPlayers = async ()=>{
   try {
     const response = await fetch(
       'https://fsa-puppy-bowl.herokuapp.com/api/2110-FTB-ET-WEB-PT/players'
@@ -14,7 +15,7 @@ async function App() {
     console.log(result);
   } catch (err) {
     console.error(err);
-  }
+  }}
   return (
     <>
       <Puppies/>
