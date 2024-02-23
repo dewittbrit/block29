@@ -22,6 +22,7 @@ return(
 <>
 {players && players.map(player=>{
     return <p key={player.id}>{player.name}</p>
+
 })}
 </>
 )

@@ -2,13 +2,13 @@
 
 // import { Link } from "react-router-dom"
 
-// const Navigations = ({user}) => {
+// const Navigations = () => {
     
     
 //     return (
 //         <nav>
-//             <Link to='/books'>Books</Link>
-//             {
+//             <Link to='/singlePlayer'>Single Player</Link>
+//             {/* {
 //                 user.email ? (
 //                     <span>
 //                         <Link to="/account">User</Link>
@@ -21,7 +21,7 @@
 //                         <Link to='/register'>Register</Link>
 //                     </span>
 //                 )
-//             }
+//             } */}
 //         </nav>
 //     )
 // }

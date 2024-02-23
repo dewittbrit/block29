@@ -1,8 +1,11 @@
 import React,{ useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
+import SinglePlayer from './components/SinglePlayer'
 // import './App.css'
 import Puppies from './components/AllPlayers'
+// import Navigations from './components/NavBar'
+// import NewPlayerForm from './components/NewPlayerForm'
+import {Link, Routes, Route} from 'react-router-dom'
+// import NewPlayerForm from './components/NewPlayerForm'
 
  function App() {
   const [players, setPlayers] = useState([])
@@ -18,7 +21,7 @@ import Puppies from './components/AllPlayers'
   }}
   return (
     <>
-      <Puppies/>
+<Puppies/>
     </>
   )
 }

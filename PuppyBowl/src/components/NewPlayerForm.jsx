@@ -1,24 +1,29 @@
-// import { useState, useEffect } from "react"
+// import {  useState, useEffect } from 'react';
+// // import { postPlayer } from '../API/FunctionHandler.js';
+// // import classes from './NewplayerForm.module.css';
+// // import Button from 'react-bootstrap/Button';
+// import { useNavigate } from 'react-router-dom';
 
-// export default function Register(){
-//     const [firstname, setFirstname] = useState("")
-//     const [lastname, setLastname] = useState("")
-//     const [email, setEmail] = useState("")
-//     const [password, setPassword] = useState("")
+
+// export default NewPlayerForm = () => {  
+//     const [puppyName, setPuppyName] = useState("");
+//     const [puppyBreed, setPuppyBreed] = useState("");
+//     const [playerStatus, setPlayerStatus] = useState("bench");
+//     const [imageUrl, setImageUrl] = useState("");
 
 //     async function handleSubmit(event){
 //         event.preventDefault()
 //         try{
-//                   const response = await fetch("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/register", {
+//                   const response = await fetch("https://fsa-puppy-bowl.herokuapp.com/api/2110-FTB-ET-WEB-PT/players", {
 //                     method: "POST",
 //                   headers: {
 //                     'Content-Type': 'application/json',
 //                   },
 //                   body: JSON.stringify({
-//                     firstname: firstname,
-//                     lastname: lastname,
-//                     email: email,
-//                     password: password
+//                     puppyName: puppyName,
+//                     puppyBreed: puppyBreed,
+//                     playerStatus: playerStatus,
+//                     imageUrl: imageUrl
 //                   })
 //                 })
 //                   const result = await response.json()
@@ -31,17 +36,17 @@
 // return (
 // <>
 //         <form onSubmit={handleSubmit}> 
-//             <label> Firstname:</label>
-//             <input value={firstname} onChange={(event)=>setFirstname(event.target.value)}></input>
+//             <label> Puppy Name:</label>
+//             <input value={puppyName} onChange={(event)=>setPuppyName(event.target.value)}></input>
 //             <br></br>
-//             <label> Lastname:</label>
-//             <input value={lastname} onChange={(event)=>setLastname(event.target.value)}></input>
+//             <label> Puppy Breed:</label>
+//             <input value={puppyBreed} onChange={(event)=>setPuppyBreed(event.target.value)}></input>
 //             <br></br>
-//             <label> Email:</label>
-//             <input value={email} onChange={(event)=>setEmail(event.target.value)}></input>
+//             <label> Player Status:</label>
+//             <input value={playerStatus} onChange={(event)=>setPlayerStatus(event.target.value)}></input>
 //             <br></br>
-//             <label> Password:</label>
-//             <input value={password} onChange={(event)=>setPassword(event.target.value)}></input>
+//             <label> Image</label>
+//             <input value={imageUrl} onChange={(event)=>setImageUrl(event.target.value)}></input>
 //             <br></br>        
 //             <button>Submit</button>
 //         </form>
