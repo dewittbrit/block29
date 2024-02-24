@@ -4,8 +4,8 @@ import SinglePlayer from './components/SinglePlayer'
 import Puppies from './components/AllPlayers'
 // import Navigations from './components/NavBar'
 // import NewPlayerForm from './components/NewPlayerForm'
-import {Link, Routes, Route} from 'react-router-dom'
-// import NewPlayerForm from './components/NewPlayerForm'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import NewPlayerForm from './components/NewPlayerForm'
 
  function App() {
   const [players, setPlayers] = useState([])
@@ -21,6 +21,8 @@ import {Link, Routes, Route} from 'react-router-dom'
   }}
   return (
     <>
+
+<NewPlayerForm/>
 <Puppies/>
     </>
   )
