@@ -1,38 +1,33 @@
 import React, { useState } from "react";
 
-const CreatePlayerForm = ({ onSubmit }) => {
+export default function CreatePlayerForm () {
     const [name, setName] = useState('');
     const [breed, setBreed] = useState('');
-
     const [status, setStatus] = useState('');
-    const [image, setImage] = useState(null);  
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      // Basic validation
-      if (!name || !breed || !status || !image) {
-        alert('Please fill out all fields');
-        return;
+    const [image, setImage] = useState(null); 
+    
+    async function handleSubmit(event){
+      event.preventDefault()
+      try{
+        const response = await fetch("https://fsa-puppy-bowl.herokuapp.com/api/2110-FTB-ET-WEB-PT/players", {
+          method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: name,
+          breed: breed,
+          status: status,
+          image: image
+        })
+      })
+        const result = await response.json()
+        console.log(result)
+        
+      } catch(err){
+              console.error(err)
       }
-      // Create player object
-      const newPlayer = {
-        name: name,
-        breed: breed,
-        status: status,
-        image: image
-      };
-      // Pass new player object to parent component
-      onSubmit(newPlayer);
-      // Clear form fields
-      setName('');
-      setBreed('');
-      setStatus('');
-      setImage(null);
-    };
-  
-    const handleImageChange = (e) => {
-      const file = e.target.files[0];
-      setImage(file);
-    };
+}
   
     return (
       <form onSubmit={handleSubmit}>
@@ -65,7 +60,7 @@ const CreatePlayerForm = ({ onSubmit }) => {
           <input
             type="file"
             accept="image/*"
-            onChange={handleImageChange}
+            onChange={(e) => setImage(e.target.value)}
           />
         </div>
         <button type="submit">Create Player</button>
@@ -73,4 +68,3 @@ const CreatePlayerForm = ({ onSubmit }) => {
     );
   };
   
-  export default CreatePlayerForm;
