@@ -21,7 +21,7 @@ import NewPlayerForm from './components/NewPlayerForm'
   }}
   return (
     <>
-
+{/* <Navigations/> */}
 <NewPlayerForm/>
 <Puppies/>
     </>
