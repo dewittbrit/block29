@@ -30,7 +30,7 @@ import SinglePlayer from './components/SinglePlayer'
 <Routes>
         {/* <Route path="/player/:id" element={<DetailsButton/>} /> */}
         <Route path='/' element={<Puppies/>} />
-        <Route path="/player/:playerID/:playerName/" element ={<SinglePlayer/>}/>
+        <Route path="/player/:playerID/:playerName/:playerBreed/:playerStatus/:playerImage" element ={<SinglePlayer/>}/>
         
     </Routes>
 

@@ -6,17 +6,17 @@ export default function SinglePlayer(){
    
 let {playerID} = useParams()
 let {playerName} = useParams()
-// let {playerBreed} = useParams()
-// let {playerStatus} = useParams()
-// let {playerImage} = useParams()
+let {playerBreed} = useParams()
+let {playerStatus} = useParams()
+let {playerImage} = useParams()
 
 return (
 <>
-   <p>Player ID {playerID}</p>
-   <p>Player Name {playerName}</p>
-   {/* <p>Player Breed {playerBreed}</p> */}
-   {/* <p>Player Status {playerStatus}</p> */}
-   {/* <p>Player Name {playerImage}</p> */}
+   <p>Player ID: {playerID}</p>
+   <p>Player Name: {playerName}</p>
+   <p>Player Breed: {playerBreed}</p>
+   <p>Player Status: {playerStatus}</p>
+   <p>Player Name: {playerImage}</p>
 </>
     )
 

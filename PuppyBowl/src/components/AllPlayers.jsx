@@ -26,9 +26,11 @@ console.log(players)
         players.map((player) => {
           return (
             <div key={player.id}>
-              <Link to={`/player/${player.id}/${player.name}`}>
-          
-                <p>{player.name}</p>
+              <p>{player.name}</p>
+              <Link to={`/player/${player.id}/${player.name}/${player.breed}/${player.status}/${player.image}`}>
+                <p>{player.breed}</p>
+                <p>{player.status}</p>
+                <img>{player.image}</img>
                 <button>See Player ID</button>
               </Link>
             </div>
