@@ -2,23 +2,22 @@
 
 import { Link } from "react-router-dom"
 
-const Navigations = ({player}) => {
+const Navigations = ({playerID}) => {
     
     
     return (
         <nav>
-            <Link to='/books'>Books</Link>
+            <Link to='/'>Puppy List</Link>
             {
-                <player className="id"></player> ? (
+                playerID ? (
                     <span>
-                        <Link to="/account">User</Link>
+                        {/* <Link to="/player/:id">Single Player</Link> */}
                     </span>
                 
                 ) : (
                     
                     <span>
-                        <Link to="/login">Login</Link>
-                        <Link to='/register'>Register</Link>
+                        {/* <Link to="/player/:id">Single Player</Link> */}
                     </span>
                 )
             }
