@@ -26,7 +26,7 @@ console.log(players)
         players.map((player) => {
           return (
             <div key={player.id}>
-              <Link to={`/player/${player.id}/${player.name}/${player.status}/`}>
+              <Link to={`/player/${player.id}/${player.name}`}>
           
                 <p>{player.name}</p>
                 <button>See Player ID</button>
