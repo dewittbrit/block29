@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 
 export default function Puppies() {
   const [players, setPlayers] = useState([]);
@@ -19,15 +19,17 @@ export default function Puppies() {
     }
     getPlayers();
   }, []);
-
+console.log(players)
   return (
     <>
       {players &&
         players.map((player) => {
           return (
             <div key={player.id}>
-              <Link to={`/player/${player.id}`}><button>See Player ID</button>
+              <Link to={`/player/${player.id}/${player.name}/${player.status}/`}>
+          
                 <p>{player.name}</p>
+                <button>See Player ID</button>
               </Link>
             </div>
           );

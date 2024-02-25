@@ -1,12 +1,10 @@
 import React,{ useState } from 'react'
-// import SinglePlayer from './components/SinglePlayer'
-import DetailsButton from './components/DetailsButton'
 import Puppies from './components/AllPlayers'
 import PlayerSearch from './components/SearchPlayer'
-
 import Navigations from './components/NavBar'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import NewPlayerForm from './components/NewPlayerForm'
+import SinglePlayer from './components/SinglePlayer'
 
  function App() {
   const [players, setPlayers] = useState([])
@@ -30,8 +28,9 @@ import NewPlayerForm from './components/NewPlayerForm'
     <PlayerSearch/>
     <NewPlayerForm/><br></br>
 <Routes>
-        <Route path="/player/:id" element={<DetailsButton/>} />
+        {/* <Route path="/player/:id" element={<DetailsButton/>} /> */}
         <Route path='/' element={<Puppies/>} />
+        <Route path="/player/:playerID/:playerName/" element ={<SinglePlayer/>}/>
         
     </Routes>
 

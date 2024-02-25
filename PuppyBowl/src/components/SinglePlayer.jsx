@@ -4,12 +4,19 @@ import { useParams } from "react-router-dom"
 
 export default function SinglePlayer(){
    
-let {player} = useParams()
-    
+let {playerID} = useParams()
+let {playerName} = useParams()
+// let {playerBreed} = useParams()
+let {playerStatus} = useParams()
+// let {playerImage} = useParams()
 
 return (
 <>
-   <p>Player Details {player}</p>
+   <p>Player ID {playerID}</p>
+   <p>Player Name {playerName}</p>
+   {/* <p>Player Breed {playerBreed}</p> */}
+   <p>Player Status {playerStatus}</p>
+   {/* <p>Player Name {playerImage}</p> */}
 </>
     )
 
