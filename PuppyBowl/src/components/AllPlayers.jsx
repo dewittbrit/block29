@@ -26,7 +26,7 @@ export default function Puppies() {
         players.map((player) => {
           return (
             <div key={player.id}>
-              <Link to={`/player/${player.id}`}>
+              <Link to={`/player/${player.id}`}><button>See Player ID</button>
                 <p>{player.name}</p>
               </Link>
             </div>

@@ -1,9 +1,9 @@
 import React,{ useState } from 'react'
 import SinglePlayer from './components/SinglePlayer'
-// import './App.css'
+import DetailsButton from './components/DetailsButton'
 import Puppies from './components/AllPlayers'
+
 // import Navigations from './components/NavBar'
-// import NewPlayerForm from './components/NewPlayerForm'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import NewPlayerForm from './components/NewPlayerForm'
 
@@ -19,11 +19,17 @@ import NewPlayerForm from './components/NewPlayerForm'
   } catch (err) {
     console.error(err);
   }}
+  getPlayers()
   return (
     <>
-{/* <Navigations/> */}
+<Routes>
+        <Route path="/player/:id" element={<DetailsButton/>} />
+      
+    </Routes>
 <NewPlayerForm/>
+<SinglePlayer/>
 <Puppies/>
+
     </>
   )
 }

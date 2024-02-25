@@ -64,6 +64,7 @@ export default function CreatePlayerForm () {
           />
         </div>
         <button type="submit">Create Player</button>
+        {/* <button type="button" onClick={() => handleSubmit(id)}>Details</button> {} */}
       </form>
     );
   };
