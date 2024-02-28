@@ -15,10 +15,8 @@ function PuppySearch() {
 
     async function searchPuppies() {
       try {
-        const encodedSearchTerm = encodeURIComponent(searchTerm);
-        console.log("Encoded search term:", encodedSearchTerm);
-
-        const response = await fetch(`https://fsa-puppy-bowl.herokuapp.com/api/2110-FTB-ET-WEB-PT/players?q=${encodedSearchTerm}`, {
+            
+        const response = await fetch(`https://fsa-puppy-bowl.herokuapp.com/api/2110-FTB-ET-WEB-PT/players`, {
           headers: {
             "Content-Type": "application/json"
           }
@@ -29,8 +27,11 @@ function PuppySearch() {
         }
 
         const data = await response.json();
-        console.log("API Response:", data);
-        setSearchResults(data.players);
+        console.log(data.data.players)
+        const filteredPuppies = data?.data?.players?.filter(player =>
+          player.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setSearchResults(filteredPuppies);
       } catch (error) {
         console.error("Error searching puppies:", error);
       } finally {
@@ -57,8 +58,8 @@ function PuppySearch() {
       {!loading && searchResults && searchResults.length === 0 && <p>No results found</p>}
       {!loading && searchResults && searchResults.length > 0 && (
         <ul>
-          {searchResults.map((puppy) => (
-            <li key={puppy.id}>{puppy.name}</li>
+          {searchResults.map((players) => (
+            <li key={players.id}>{players.name}</li>
           ))}
         </ul>
       )}
