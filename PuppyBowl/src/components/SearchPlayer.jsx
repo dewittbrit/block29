@@ -1,57 +1,69 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-const SearchPlayer = () => {
-  const [query, setQuery] = useState('');
-  const [puppyDetails, setPuppyDetails] = useState(null);
+function PuppySearch() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (query.trim() !== '') {
-      setLoading(true);
-      fetch(`https://fsa-puppy-bowl.herokuapp.com/api/2110-FTB-ET-WEB-PT/players?name=${query}`)
-        .then(response => response.json())
-        .then(data => {
-          if(data.length > 0){
-            setPuppyDetails(data[0]);
-          }
-          setLoading(false);
-        })
-        .catch(error => {
-          console.error('Error fetching puppy details:', error);
-          setLoading(false);
-        });
-    } else {
-      setPuppyDetails(null);
+    if (!searchTerm) {
+      setSearchResults([]);
+      return;
     }
-  }, [query]);
 
-  const handleInputChange = (event) => {
-    setQuery(event.target.value);
+    setLoading(true);
+
+    async function searchPuppies() {
+      try {
+        const encodedSearchTerm = encodeURIComponent(searchTerm);
+        console.log("Encoded search term:", encodedSearchTerm);
+
+        const response = await fetch(`https://fsa-puppy-bowl.herokuapp.com/api/2110-FTB-ET-WEB-PT/players?q=${encodedSearchTerm}`, {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch search results");
+        }
+
+        const data = await response.json();
+        console.log("API Response:", data);
+        setSearchResults(data.players);
+      } catch (error) {
+        console.error("Error searching puppies:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    searchPuppies();
+  }, [searchTerm]);
+
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
   };
 
   return (
     <div>
       <input
         type="text"
-        value={query}
-        onChange={handleInputChange}
-        placeholder="Search for a puppy by name..."
+        placeholder="Search for puppies..."
+        value={searchTerm}
+        onChange={handleChange}
       />
       {loading && <p>Loading...</p>}
-      {puppyDetails && (
-        <div>
-          <h2>{puppyDetails.name}</h2>
-          <p>Breed: {puppyDetails.breed}</p>
-          <p>Status {puppyDetails.status}</p>
-          <p>Image: {puppyDetails.image}</p>
-         
-        </div>
-      )}
-      {puppyDetails === null && !loading && query.trim() !== '' && (
-        <p>No puppy found with name: {query}</p>
+      {!loading && searchResults && searchResults.length === 0 && <p>No results found</p>}
+      {!loading && searchResults && searchResults.length > 0 && (
+        <ul>
+          {searchResults.map((puppy) => (
+            <li key={puppy.id}>{puppy.name}</li>
+          ))}
+        </ul>
       )}
     </div>
   );
-};
+}
 
-export default SearchPlayer;
+export default PuppySearch;

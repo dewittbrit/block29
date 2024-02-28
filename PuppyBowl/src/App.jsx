@@ -1,6 +1,6 @@
 import React,{ useState } from 'react'
 import Puppies from './components/AllPlayers'
-import PlayerSearch from './components/SearchPlayer'
+import PuppySearch from './components/SearchPlayer'
 import Navigations from './components/NavBar'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import NewPlayerForm from './components/NewPlayerForm'
@@ -25,15 +25,16 @@ import SinglePlayer from './components/SinglePlayer'
   return (
     <>
     <Navigations/>
-    <PlayerSearch/>
+    
     <NewPlayerForm/><br></br>
+    <PuppySearch/>
 <Routes>
         {/* <Route path="/player/:id" element={<DetailsButton/>} /> */}
         <Route path='/' element={<Puppies/>} />
         <Route path="/player/:playerID/:playerName/:playerBreed/:playerStatus/:playerImage" element ={<SinglePlayer/>}/>
         
     </Routes>
-
+   
 {/* <SinglePlayer/> */}
 {/* <Puppies/> */}
 
